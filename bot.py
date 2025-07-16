@@ -442,6 +442,8 @@ async def logger():
         except Exception as ex:
             LOG.exception(ex)
             pass
+            
+print(DISCORD_KEY)
 
 if __name__ == '__main__':
     #combine_images(["./pbf/static/pbf/settle_into_huntinggrounds.jpg","./pbf/static/pbf/flocking_redtalons.jpg","./pbf/static/pbf/vigor_of_the_breaking_dawn.jpg","./pbf/static/pbf/vengeance_of_the_dead.jpg"])
