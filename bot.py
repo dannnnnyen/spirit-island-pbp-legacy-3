@@ -176,7 +176,12 @@ def match_game_url(s):
 
 async def link_channel_to_game(after, guid):
     LOG.msg(f'found guid: {guid}, linking to channel: {after.id}')
-    r = requests.post(f'http://{DJANGO_HOST}:{DJANGO_PORT}/api/game/{guid}/link/{after.id}')
+    r = requests.post(f'http://{DJANGO_HOST}:8000/api/game/{guid}/link/{after.id}')
+    LOG.msg(r)
+    if r.status_code == 200:
+        await after.send(f'Now relaying game log for {guid} to this channel. Good luck!')
+        return True
+    r = requests.post(f'http://{DJANGO_HOST}:8080/api/game/{guid}/link/{after.id}')
     LOG.msg(r)
     if r.status_code == 200:
         await after.send(f'Now relaying game log for {guid} to this channel. Good luck!')
